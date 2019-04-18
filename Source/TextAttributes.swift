@@ -62,7 +62,7 @@ open class TextAttributes {
      
      - returns: The created TextAttributes.
      */
-    @available(*, deprecated: 1, message: "Please use the clone() method.")
+    @available(*, deprecated, message: "Please use the clone() method.")
     public init(base: TextAttributes) {
         dictionary = base.dictionary
         paragraphStyle = base.paragraphStyle.clone()
@@ -200,11 +200,11 @@ open class TextAttributes {
     /// The strikethrough style attribute.
     open var strikethroughStyle: NSUnderlineStyle {
         get {
-            if let int = dictionary[NSAttributedString.Key.strikethroughStyle] as? Int {
-                let style = NSUnderlineStyle(rawValue: int)
+            if let int = dictionary[NSAttributedString.Key.underlineStyle] as? Int {
+                guard let style = NSUnderlineStyle(rawValue: int) else { return NSUnderlineStyle.styleSingle }
                 return style
             } else {
-                return []
+                return NSUnderlineStyle.styleSingle
             }
         }
         
@@ -312,10 +312,10 @@ open class TextAttributes {
     open var underlineStyle: NSUnderlineStyle {
         get {
             if let int = dictionary[NSAttributedString.Key.underlineStyle] as? Int {
-                let style = NSUnderlineStyle(rawValue: int)
+                guard let style = NSUnderlineStyle(rawValue: int) else { return NSUnderlineStyle.styleSingle }
                 return style
             } else {
-                return []
+                return NSUnderlineStyle.styleSingle
             }
         }
         
