@@ -201,10 +201,9 @@ open class TextAttributes {
     open var strikethroughStyle: NSUnderlineStyle {
         get {
             if let int = dictionary[NSAttributedString.Key.underlineStyle] as? Int {
-                guard let style = NSUnderlineStyle(rawValue: int) else { return NSUnderlineStyle.styleSingle }
-                return style
+                return NSUnderlineStyle(rawValue: int)
             } else {
-                return NSUnderlineStyle.styleSingle
+                return NSUnderlineStyle.single
             }
         }
         
@@ -311,11 +310,10 @@ open class TextAttributes {
     /// The underline style attribute.
     open var underlineStyle: NSUnderlineStyle {
         get {
-            if let int = dictionary[NSAttributedString.Key.underlineStyle] as? Int {
-                guard let style = NSUnderlineStyle(rawValue: int) else { return NSUnderlineStyle.styleSingle }
-                return style
+            if let int = dictionary[NSAttributedString.Key.underlineStyle] as? Int {                
+                return NSUnderlineStyle(rawValue: int)
             } else {
-                return NSUnderlineStyle.styleSingle
+                return NSUnderlineStyle.single
             }
         }
         
